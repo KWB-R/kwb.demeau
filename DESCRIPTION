@@ -16,3 +16,5 @@ LazyLoad: yes
 URL: https://github.com/KWB-R/kwb.demeau
 BugReports: https://github.com/KWB-R/kwb.demeau/issues
 RoxygenNote: 6.0.1
+Suggests: 
+    testthat
