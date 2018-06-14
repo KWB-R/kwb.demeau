@@ -1,5 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^packrat/
-^\.Rprofile$
-demeau.RData
+.travis.yml
+^appveyor\.yml$
+^codecov\.yml$
+^README\.md$
+^docs\.*
+_pkgdown.yaml
+LICENSE\.md$
+.gitlab-ci.yml
