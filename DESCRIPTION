@@ -9,7 +9,7 @@ Depends: R (>= 3.0.0), shapefiles, hydroGOF, lattice, latticeExtra, kwb.vs2dh, k
 Imports: RCurl, plyr, sp
 Remotes: 
    github::kwb-r/kwb.utils,
-   github::kwb-r/kwb.db
+   github::kwb-r/kwb.db,
    github::kwb-r/kwb.vs2dh
 License: MIT + file LICENSE
 LazyLoad: yes
