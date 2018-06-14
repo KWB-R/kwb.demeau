@@ -1,0 +1,10 @@
+Package: kwb.demeau
+Version: 0.1.9999
+Title: Heat tracer study SVH
+Author: Michael Rustler
+Maintainer: Michael Rustler <michael.rustler@kompetenz-wasser.de>
+Description: Heat tracer study for SVH site using USGS VS2DH model.
+Depends: R (>= 3.0.0), shapefiles, hydroGOF, lattice, latticeExtra, kwb.vs2dh, kwb.utils, kwb.db
+Imports: RCurl, plyr, sp
+License: GPL (>=2)
+LazyLoad: yes
