@@ -56,26 +56,29 @@ SVH model configuration
 Model: prepare model configuration
 }
 \examples{
+\dontrun{
 ### Importing GIS features
 shp.dir <- system.file("extdata", "qgis", package="kwb.demeau")
 shp.files <- dir(path = shp.dir, pattern = ".shp", full.names = TRUE)
 gisData <- importShapefiles(shp.files)
+
 ### Optionally remove some features 
 gisData <- removeFeatures(gisData = gisData, ignoreFeatureIDs = c(3,20))
 modelStructure <- convRealCoordinatesToNodes(gisData = gisData)
+
 ### Model config
 conf <- modelConfiguration(modelStructure = modelStructure)
                
 ### Running the configuration in VS2DH
-res <- kwb.vs2dh::vs2di.runConfig(conf = conf,
-                                 openTargetDir = TRUE)
+res <- kwb.vs2dh::vs2di.runConfig(conf = conf, openTargetDir = TRUE)
 
 ### Plotting results
-kwb.vs2dh::vs2dh.plotObservationPoints(paras = "TEMP", 
-                                   paraLabel = "Temperature", 
-                                   data=res$obsPoints)
-kwb.vs2dh::vs2dh.plotVariables(para = "Temp", 
-                               data = res$variables)  
+kwb.vs2dh::vs2dh.plotObservationPoints(
+  paras = "TEMP", paraLabel = "Temperature", data = res$obsPoints
+)
+kwb.vs2dh::vs2dh.plotVariables(para = "Temp", data = res$variables)
+}
+
 }
 \seealso{
 \code{defineHeadBoundary} for valid additional arguments
