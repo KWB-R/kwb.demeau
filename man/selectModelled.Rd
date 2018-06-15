@@ -4,14 +4,14 @@
 \alias{selectModelled}
 \title{Compare measured & modelled results}
 \usage{
-selectModelled(modDf, parName = "TEMP", func = median)
+selectModelled(modDf, parName = "TEMP", func = stats::median)
 }
 \arguments{
 \item{modDf}{modDf}
 
 \item{parName}{(Default: "TEMP")}
 
-\item{func}{(Default: median)}
+\item{func}{(Default: \code{\link[stats]{median}})}
 }
 \value{
 Plot of water level, water level change & temperature of measured vs.
