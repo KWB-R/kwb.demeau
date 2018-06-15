@@ -187,28 +187,38 @@ compareModelledMeasured <- function(heatModel,
 }
 
 #' Compare measured & modelled results
-#' @param heatModel object as retrieved by runHeatModel() 
+#' 
+#' @param heatModel object as retrieved by runHeatModel()
 #' @param moniDat as retrieved by processingData()
-#' @param objState model state variable to be optimised either "waterLevelChange"  
-#' or "temp" (for temperature) (Default: "waterLevelChange") 
-#' @param objCrit vector with performance parameters produced by function 
-#' hydroGOF:gof(), Default: "RMSE" (valid parameters: "ME", MAE", "MSE", "RMSE", 
-#' "NRMSE", "PBIAS", "RSR", "rSD", "NSE", "mNSE", "rNSE", "d", "md", "rd", "cp", 
-#' "r", "R2", "bR2", "KGE", "VE") 
+#' @param objState model state variable to be optimised either
+#'   "waterLevelChange" or "temp" (for temperature) (Default:
+#'   "waterLevelChange")
+#' @param objCrit vector with performance parameters produced by function
+#'   hydroGOF:gof(), Default: "RMSE" (valid parameters: "ME", MAE", "MSE",
+#'   "RMSE", "NRMSE", "PBIAS", "RSR", "rSD", "NSE", "mNSE", "rNSE", "d", "md",
+#'   "rd", "cp", "r", "R2", "bR2", "KGE", "VE")
 #' @param plotIt if TRUE lattice plot will be produced (Default: TRUE)
-#' @param ... additional parameters passe to plot function lattice:xyplot()
+#' @param plot.type plot type
+#' @param cex.label character expansion factor for labels
+#' @param main plot title
+#' @param performance.in.label if \code{TRUE}, the performance indicator appears
+#'   as label
+#' @param \dots additional parameters passe to plot function lattice:xyplot()
 #' @return Plot of water level, water level change & temperature of measured vs.
-#' modelled data 
-fitnessWithLabel <- function(heatModel,
-                             moniDat,
-                             objState = "waterLevelChange",
-                             objCrit = c("RMSE", "R2"), 
-                             plotIt = TRUE,
-                             plot.type = "b",
-                             cex.label = 1,
-                             main = NULL,
-                             performance.in.label = TRUE,
-                             ...) {
+#'   modelled data
+fitnessWithLabel <- function(
+  heatModel,
+  moniDat,
+  objState = "waterLevelChange",
+  objCrit = c("RMSE", "R2"), 
+  plotIt = TRUE,
+  plot.type = "b",
+  cex.label = 1,
+  main = NULL,
+  performance.in.label = TRUE,
+  ...
+) 
+{
   compared <- compareModelledMeasured(heatModel = heatModel,
                                       moniDat = moniDat,
                                       toPlot = FALSE)
