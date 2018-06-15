@@ -118,29 +118,31 @@ downloadMeteoData <- function (startYear = 2008,
     # Remove "<br />" at the end of each line
     x <- gsub("<br />", "", x)
     
-    meteoData <- rbind(meteoData, read.csv(textConnection(x)))
+    meteoData <- rbind(meteoData, utils::read.csv(textConnection(x)))
   }
-  meteoData$CET <- as.Date(meteoData$CET, tz="CET")
-  meteoData <- kwb.utils::hsRenameColumns(dframe = meteoData, 
-                                          renames = list(CET="myDate"))
-  return(meteoData)
+  
+  meteoData$CET <- as.Date(meteoData$CET, tz = "CET")
+  
+  kwb.utils::hsRenameColumns(meteoData, list(CET = "myDate"))
 }
-
 
 #' Monitoring: convert data to matrix forma
 #' 
 #' @param df data frame with structure like: moniDat$agg$dailyMedian
 
 listToMatrixForm <- function (df) {
-  wide <- reshape(data = df,
-                  timevar = "moniParName", 
-                  idvar=c("myDate", "moniLocation"), 
-                  drop=c("commentID", "Type" ), 
-                  direction = "wide")
-  colnames(wide) <- sub(pattern = "parVal.", 
-                        replacement = "", 
-                        x = colnames(wide)) 
-  return(wide)
+  
+  wide <- stats::reshape(
+    data = df,
+    timevar = "moniParName", 
+    idvar=c("myDate", "moniLocation"), 
+    drop=c("commentID", "Type" ), 
+    direction = "wide"
+  )
+  
+  colnames(wide) <- sub("parVal.", "", colnames(wide)) 
+  
+  wide
 }
 
 #' Helper function: rename values

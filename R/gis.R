@@ -134,8 +134,8 @@ addHorizontalDistances <- function(gisData,
   polygons <- gisData$shape.type==5
   tmp <- gisData[polygons, ]
   
-  minDist <- aggregate(x = tmp$xModel, by = list(shape.name=tmp$shape.name, id=tmp$id),FUN = min)
-  maxDist <- aggregate(x = tmp$xModel, by = list(shape.name=tmp$shape.name, id=tmp$id),FUN = max)
+  minDist <- stats::aggregate(x = tmp$xModel, by = list(shape.name=tmp$shape.name, id=tmp$id),FUN = min)
+  maxDist <- stats::aggregate(x = tmp$xModel, by = list(shape.name=tmp$shape.name, id=tmp$id),FUN = max)
   
   polygonMinMaxIndexes <- gisData$xModel %in% c(minDist$x, maxDist$x)
   

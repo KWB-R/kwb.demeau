@@ -66,7 +66,7 @@ setSoilZero <- function (nodes,
 setFeatureIDs <- function(x) 
 {
   ### Add feature identifer id (column fID)
-  identifier <- aggregate(x=x$id, by = list(shape.name=x$shape.name, id=x$id),FUN = min)
+  identifier <- stats::aggregate(x=x$id, by = list(shape.name=x$shape.name, id=x$id),FUN = min)
   identifier <- identifier[order(identifier$shape.name, identifier$id),]
   identifier$x <- 1:nrow(identifier)
   names(identifier)[names(identifier)=="x"] <- "fID"
@@ -95,10 +95,8 @@ getFeatures <- function (gisData,
   
   #### Group by fId for adding meta info to x
   features <- gisData[,colNames]
-  form <- as.formula(paste(colNames[1], " ~ ", paste(colNames[2:length(colNames)], collapse = " + ")))
-  features <- aggregate(formula = form, 
-                        data=features ,
-                        FUN = min)
+  form <- stats::as.formula(paste(colNames[1], " ~ ", paste(colNames[2:length(colNames)], collapse = " + ")))
+  features <- stats::aggregate(formula = form, data = features, FUN = min)
   
   return(features)
 }

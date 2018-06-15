@@ -31,22 +31,30 @@ modelCoordinatesToFeature <- function  (x = c(100,220),
         
         xOffset <- pondDepth / sin(alpha)
         
-        y <- median(y)
+        y <- stats::median(y)
         yOffset <- y - pondDepth
         
         xOffsetRounded <- ceiling(xOffset/dx)*dx 
         yOffsetRounded <-  ceiling(yOffset/dy)*dy 
         
-        bank <- approx(x = c(0,xOffsetRounded), y = c(y,  yOffsetRounded),xout=seq(0,xOffsetRounded,by = dx))
+        bank <- stats::approx(
+          x = c(0, xOffsetRounded), 
+          y = c(y, yOffsetRounded),
+          xout = seq(0, xOffsetRounded, by = dx)
+        )
         
-        leftBank <- data.frame(x = seq(from = x[1], to = x[1] + xOffsetRounded, by = dx),
-                               y = y + bank$y)
+        leftBank <- data.frame(
+          x = seq(from = x[1], to = x[1] + xOffsetRounded, by = dx),
+          y = y + bank$y
+        )
         
-        rightBank <- data.frame(x = seq(from = x[2]  - xOffsetRounded, to = x[2], by = dx),
-                                y = y + bank$y[order(bank$y,decreasing = FALSE)])
+        rightBank <- data.frame(
+          x = seq(from = x[2]  - xOffsetRounded, to = x[2], by = dx),
+          y = y + bank$y[order(bank$y,decreasing = FALSE)]
+        )
         
         out<- leftBank
-        out<- rbind(out,rightBank)
+        out<- rbind(out, rightBank)
         
         xCoord <- seq(from = x[1] + xOffsetRounded, to = x[2] - xOffsetRounded, by = dx)
         
@@ -119,12 +127,14 @@ convRealToModelCoordinates  <- function(gisData,
     selFeature <- gisData[condition, ]
     out <- data.frame()
     if (all(selFeature$shape.type == 5)) { ### Is Polygon ,i.e. Pond? 
-      out <- modelCoordinatesToFeature(x = selFeature$xModel,
-                                       y = 0,
-                                       dx = dx, 
-                                       dy = dy, 
-                                       pondDepth = median(selFeature$pondDepth, na.rm=TRUE), 
-                                       steepness = median(selFeature$steepness, na.rm=TRUE))
+      out <- modelCoordinatesToFeature(
+        x = selFeature$xModel,
+        y = 0,
+        dx = dx, 
+        dy = dy, 
+        pondDepth = stats::median(selFeature$pondDepth, na.rm = TRUE), 
+        steepness = stats::median(selFeature$steepness, na.rm = TRUE)
+      )
       
     } else if (selFeature$shape.type == 1 &&  #### Is Boundary
                  is.na(selFeature$fcTop) &&

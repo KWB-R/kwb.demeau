@@ -50,12 +50,13 @@ modelFitnessAggregated <- function(modelledMeasured,
                                    objCrit = "RMSE",
                                    ...) {
   
-  fitness <- modelFitness(modelledMeasured, 
-                          obsPoints, 
-                          ...)
-  x <- median(fitness[,objCrit])
-  print(sprintf("RSME: %3.2f", x))
-  return(x)
+  fitness <- modelFitness(modelledMeasured, obsPoints, ...)
+  
+  x <- stats::median(fitness[, objCrit])
+  
+  cat(sprintf("RSME: %3.2f\n", x))
+  
+  x
 }
 
 
@@ -142,7 +143,7 @@ calibrateModel <- function(
   objCrit = "RMSE",
   ...) 
 {
-  optResults <- optimise(
+  optResults <- stats::optimise(
     f = fitnessAdaptedModelConfiguration, 
     interval = parameterRange,
     parameterName = parameterName, 
@@ -151,7 +152,8 @@ calibrateModel <- function(
     obsPoints = obsPoints,
     objState = objState,
     objCrit = objCrit,
-    ...)
+    ...
+  )
   
   ### Save calibrated WTAQ configuration: 
   vs2dhConfigCalibrated <- list(

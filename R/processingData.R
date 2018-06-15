@@ -8,14 +8,18 @@ processingData <- function (rawData) {
   rawData$raw$comments$myDate <- as.Date(rawData$raw$comments$myDateTime, tz="CET")
   
   ### 1.1) Aggregate to daily median values 
-  tsDailyMedian <- aggregate(parVal ~ myDate + moniLocation + moniParName,
-                             data = rawData$raw$timeSeries, 
-                             FUN = median)
+  tsDailyMedian <- stats::aggregate(
+    parVal ~ myDate + moniLocation + moniParName,
+    data = rawData$raw$timeSeries, 
+    FUN = stats::median
+  )
   #tsDailyMedian <- tsDailyMedian[tsDailyMedian$parVal != 0,]
   
-  commentsDailyMedian <- aggregate(parVal ~ myDate + moniLocation,
-                                   data = rawData$raw$comments, 
-                                   FUN = median)
+  commentsDailyMedian <- stats::aggregate(
+    parVal ~ myDate + moniLocation,
+    data = rawData$raw$comments, 
+    FUN = stats::median
+  )
   commentsDailyMedian <- commentsDailyMedian[commentsDailyMedian$parVal != 0,]
   commentsDailyMedian <- kwb.utils::hsRenameColumns(dframe = commentsDailyMedian, 
                                                     renames = list(parVal="commentID"))

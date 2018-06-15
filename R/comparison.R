@@ -16,16 +16,14 @@ mainLabel <- function(model) {
 #' Compare measured & modelled results
 #' @param modDf modDf
 #' @param parName (Default: "TEMP")
-#' @param func (Default: median)
+#' @param func (Default: \code{\link[stats]{median}})
 #' @return Plot of water level, water level change & temperature of measured vs.
 #' modelled data 
 #' 
-selectModelled <- function(modDf, 
-                           parName = "TEMP",
-                           func = median) {
-  expr <- as.formula(sprintf("%s ~ Name + TIME_day", parName))
+selectModelled <- function(modDf, parName = "TEMP", func = stats::median) {
+  expr <- stats::as.formula(sprintf("%s ~ Name + TIME_day", parName))
   
-  x <- aggregate(expr, data = modDf, FUN = func)
+  x <- stats::aggregate(expr, data = modDf, FUN = func)
   names(x)[which(names(x) == parName)] <- "modelled"
   return(x)
 }
@@ -78,7 +76,7 @@ compareModelledMeasured <- function(heatModel,
   ### 1) Depth to water table 
   depthToWaterTableModelled <- selectModelled(modDf = modelled, 
                                               parName = "H_m", 
-                                              func = median)
+                                              func = stats::median)
   
 
   ## 2) Water level change 
@@ -96,16 +94,18 @@ compareModelledMeasured <- function(heatModel,
   waterLevelChangeMeasured <- infPeriod[infPeriod$moniParName == "WaterLevelChange_cm",c("moniLocation", "parVal", "TIME_day")]
   names(waterLevelChangeMeasured)[names(waterLevelChangeMeasured) == "parVal"] <- "measured"
   
-  waterLevelChangeModMeas <- merge(waterLevelChangeModelled, waterLevelChangeMeasured, 
-                           by.x = c("Name", "TIME_day"), 
-                           by.y = c("moniLocation", "TIME_day"),
-                           all.x = TRUE)
-
-  ### 3) Temperature 
-  tempModelled <- selectModelled(modDf = modelled, 
-                                 parName = "TEMP", 
-                                 func = median)
+  waterLevelChangeModMeas <- merge(
+    waterLevelChangeModelled, 
+    waterLevelChangeMeasured, 
+    by.x = c("Name", "TIME_day"), 
+    by.y = c("moniLocation", "TIME_day"),
+    all.x = TRUE
+  )
   
+  ### 3) Temperature 
+  tempModelled <- selectModelled(
+    modDf = modelled, parName = "TEMP", func = stats::median
+  )
   
   tempMeasured <- infPeriod[infPeriod$moniParName == "Temp_C",c("moniLocation", "parVal", "TIME_day")]
   names(tempMeasured)[names(tempMeasured) == "parVal"] <- "measured"
@@ -120,29 +120,33 @@ compareModelledMeasured <- function(heatModel,
     mLabel <- mainLabel(heatModel)
     
     ### 1) Depth to water table 
-    print(lattice::xyplot(as.formula("modelled  ~ TIME_day | Name"), 
-                 auto.key =  list(columns = 2),
-                 type = "l", pch = 16, 
-                 data = orderedDataFrame(df = depthToWaterTableModelled), 
-                 ylab = "Water level (in meters) below surface", 
-                 xlab = xlabel,
-                 main = mLabel))
+    print(lattice::xyplot(
+      stats::as.formula("modelled  ~ TIME_day | Name"), 
+      auto.key =  list(columns = 2),
+      type = "l", pch = 16, 
+      data = orderedDataFrame(df = depthToWaterTableModelled), 
+      ylab = "Water level (in meters) below surface", 
+      xlab = xlabel,
+      main = mLabel
+    ))
     
 
 #     key = list(text = list("modelled", "measured"), 
 #                points = list(pch = c(16,16), col = 12:14)), pch = 16, col = c("red", "blue"))
   
     ## 2) Water level change 
-    print(lattice::xyplot(as.formula("modelled + measured ~ TIME_day | Name"),  
-                 auto.key =  list(columns = 2),
-                 type = "b", 
-                 pch = 16,
-                 data = orderedDataFrame(df = waterLevelChangeModMeas), 
-                 ylab = "Water level change (in centimeters)", 
-                 xlab = xlabel,
-                 main = mLabel))
+    print(lattice::xyplot(
+      stats::as.formula("modelled + measured ~ TIME_day | Name"),  
+      auto.key =  list(columns = 2),
+      type = "b", 
+      pch = 16,
+      data = orderedDataFrame(df = waterLevelChangeModMeas), 
+      ylab = "Water level change (in centimeters)", 
+      xlab = xlabel,
+      main = mLabel
+    ))
     ### New plotting style test
-#     print(lattice::xyplot(as.formula("modelled + measured ~ TIME_day | Name"),  
+#     print(lattice::xyplot(stats::as.formula("modelled + measured ~ TIME_day | Name"),  
 #                           key = list(text = list(c("modelled", "measured")), 
 #                                      type = list(c("l","l")),
 #                                      points = list(pch = c(16,1), 
@@ -159,13 +163,15 @@ compareModelledMeasured <- function(heatModel,
     
     
     ### 3) Temperature 
-    print(lattice::xyplot(as.formula("modelled + measured ~ TIME_day | Name"), 
-               auto.key = list(columns = 2),
-               type = "p", pch = 16,
-               data = orderedDataFrame(df = tempModMeas), 
-               ylab = "Temperature (in \u00B0\ C)", 
-               xlab = xlabel,
-               main = mLabel))
+    print(lattice::xyplot(
+      stats::as.formula("modelled + measured ~ TIME_day | Name"), 
+      auto.key = list(columns = 2),
+      type = "p", pch = 16,
+      data = orderedDataFrame(df = tempModMeas), 
+      ylab = "Temperature (in \u00B0\ C)", 
+      xlab = xlabel,
+      main = mLabel
+    ))
   }
   
   fitness <- list()
@@ -247,7 +253,7 @@ fitnessWithLabel <- function(heatModel,
     xlabel <- list(label = xlabel, cex = cex.label)
     
     latticeObject <- lattice::xyplot(
-      as.formula("modelled + measured ~ TIME_day | Label"),  
+      stats::as.formula("modelled + measured ~ TIME_day | Label"),  
       auto.key =  list(columns = 2, cex = cex.label),
       type = plot.type, 
       pch = 16,
@@ -301,7 +307,7 @@ soluteModelled <- function(soluteModel,
   ### 1) Concentration
   concModelled <- selectModelled(modDf = modelled, 
                                  parName = "CONC", 
-                                 func = median)
+                                 func = stats::median)
   
   domTimess <- dominantTravelTimes(concModelled = concModelled,
                                  offset = offset)
@@ -315,14 +321,16 @@ soluteModelled <- function(soluteModel,
     mLabel <- mainLabel(soluteModel)
     
     ### 1) Depth to water table 
-    print(lattice::xyplot(as.formula("modelled  ~ TIME_day | Label"), 
-                          auto.key =  list(columns = 2),
-                          type = "p", pch = 16, 
-                          data = concModelled, 
-                          ylab = "Solute concentration", 
-                          xlab = xlabel,
-                          main = mLabel,
-                          ...))
+    print(lattice::xyplot(
+      stats::as.formula("modelled  ~ TIME_day | Label"), 
+      auto.key =  list(columns = 2),
+      type = "p", pch = 16, 
+      data = concModelled, 
+      ylab = "Solute concentration", 
+      xlab = xlabel,
+      main = mLabel,
+      ...
+    ))
   }
   
   x <- list(concModelled = concModelled,

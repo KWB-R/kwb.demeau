@@ -9,14 +9,15 @@ plotModelStructure <- function(df, xColName="x", yColName="y")
 {
   ncols <- length(unique(df$fID))/4
   
-  formula <- as.formula(sprintf("%s ~ %s", 
-                                yColName, 
-                                xColName))
+  formula <- stats::as.formula(sprintf("%s ~ %s", yColName, xColName))
   
-  print(lattice::xyplot(formula, groups = df$Name, 
-                        data=df, 
-                        pch=16, 
-                        auto.key=list(columns = ncols) ))
+  print(lattice::xyplot(
+    formula, 
+    groups = df$Name, 
+    data = df, 
+    pch = 16, 
+    auto.key = list(columns = ncols) 
+  ))
 }
 
 #' Monitoring: plot data with two y axex
@@ -47,28 +48,32 @@ plotMonitoringWithTwoYAxes <- function (parY1 = "WaterLevelChange_cm",
   dates <- df$myDate
   
   ## construct separate plots for each series
-  obj1 <- lattice::xyplot(as.formula(sprintf("%s ~ myDate | moniLocation", parY1)), 
-                          data=df, 
-                          panel=function(...) {
-                            panel.xyplot(...)
-                            panel.abline(v=dates, col = "lightgrey",lty = 2, lwd=0.5) 
-                          },
-                          type = "l", 
-                          xlab="", 
-                          ylab="", 
-                          auto.key=TRUE,
-                          ...)
-  obj2 <- lattice::xyplot(as.formula(sprintf("%s ~ myDate | moniLocation", parY2)), 
-                          data=df,
-                          panel=function(...) {
-                            panel.xyplot(...)
-                            panel.abline(v=dates, col = "lightgrey", lty = 2, lwd=0.5) 
-                          },
-                          type = "l", 
-                          xlab="", 
-                          ylab="",
-                          auto.key=TRUE, 
-                          ...)
+  obj1 <- lattice::xyplot(
+    stats::as.formula(sprintf("%s ~ myDate | moniLocation", parY1)), 
+    data = df, 
+    panel = function(...) {
+      panel.xyplot(...)
+      panel.abline(v=dates, col = "lightgrey",lty = 2, lwd=0.5) 
+    },
+    type = "l", 
+    xlab = "", 
+    ylab = "", 
+    auto.key = TRUE,
+    ...
+  )
+  obj2 <- lattice::xyplot(
+    stats::as.formula(sprintf("%s ~ myDate | moniLocation", parY2)), 
+    data = df,
+    panel = function(...) {
+      panel.xyplot(...)
+      panel.abline(v=dates, col = "lightgrey", lty = 2, lwd=0.5) 
+    },
+    type = "l", 
+    xlab = "", 
+    ylab = "",
+    auto.key = TRUE, 
+    ...
+  )
   
   ## ...or with a key
   latticeExtra::doubleYScale(obj1, obj2, auto.key = list(columns=2,
@@ -107,19 +112,23 @@ plotMonitoringData <- function (moniParName="WaterLevel_cm",
               df$moniParName==moniParName,]
   if (groups==FALSE)
   {
-    print(lattice::xyplot(as.formula(sprintf("parVal ~ %s | moniLocation", dateCol)), 
-                          ylab=moniParName, 
-                          xlab="Date",
-                          data=sel, 
-                          as.table=TRUE))
+    print(lattice::xyplot(
+      stats::as.formula(sprintf("parVal ~ %s | moniLocation", dateCol)), 
+      ylab = moniParName, 
+      xlab = "Date",
+      data = sel, 
+      as.table = TRUE
+    ))
   } else {
-    print(lattice::xyplot(as.formula(sprintf("parVal ~ %s", dateCol)),
-                          groups=df$moniLocation,
-                          ylab=moniParName, 
-                          xlab="Date",
-                          data=sel, 
-                          auto.key=TRUE, #list(columns=unique(df$moniLocation)),
-                          as.table=TRUE))
+    print(lattice::xyplot(
+      stats::as.formula(sprintf("parVal ~ %s", dateCol)),
+      groups = df$moniLocation,
+      ylab = moniParName, 
+      xlab = "Date",
+      data = sel, 
+      auto.key = TRUE, #list(columns=unique(df$moniLocation)),
+      as.table = TRUE
+    ))
   }
   
 }

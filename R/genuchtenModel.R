@@ -82,7 +82,7 @@ return(res)
 #' @return plot of all genuchten models 
 #' 
 plotGenuchtenModels <- function(models = genuchtenModels(), ...) {
-print(lattice::xyplot(as.formula("pressureHead ~ effSaturation | label"), 
+print(lattice::xyplot(stats::as.formula("pressureHead ~ effSaturation | label"), 
                 ylim = rev(c(min(models$pressureHead),0)),
                 xlim = c(0,1), type = "b", pch = 16, ...,
   data = models, auto.key = TRUE, as.table = TRUE))

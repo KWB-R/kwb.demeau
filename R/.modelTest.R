@@ -39,18 +39,20 @@ iniAmbientTemp <- filterMoniData(paras = "Temp_C",
 
 ### Median GW temperature before infiltration 
 #### (important note: ignored BSV-1 has 12 C !!! -> permanent infiltration????)
-iniAmbientTempMedian <- aggregate(as.formula("parVal ~ moniLocation"), 
-                                  data = iniAmbientTemp,
-                                  FUN = median)
+iniAmbientTempMedian <- stats::aggregate(
+  stats::as.formula("parVal ~ moniLocation"), 
+  data = iniAmbientTemp,
+  FUN = stats::median
+)
 
 condition <- !iniAmbientTempMedian$moniLocation %in% c("Tuberia", "BSV-2_BARO65699", "BSV-1")
-iniAmbientGwTempMedian <- median(iniAmbientTempMedian[condition,]$parVal)
+iniAmbientGwTempMedian <- stats::median(iniAmbientTempMedian[condition,]$parVal)
 
 print(sprintf("Initial GW temperature before infiltration: %2.3f C", iniAmbientGwTempMedian))
 
 ### Median pond temperature at Tuberia during infiltration period
 pondTemp <- infPeriod[infPeriod$moniParName == "Temp_C" & infPeriod$moniLocation == "Tuberia",]
-pondTempMedian <- median(pondTemp$parVal)
+pondTempMedian <- stats::median(pondTemp$parVal)
 
 print(sprintf("Median pond temperature during infiltration: %2.3f C", pondTempMedian))
 
@@ -58,10 +60,10 @@ print(sprintf("Median pond temperature during infiltration: %2.3f C", pondTempMe
 # 2009-04-02
 inflow_cbmPerHour <- infPeriod$parVal[infPeriod$moniParName == "Inflow_cbmPerH"]
 
-medianInflow_cbmPerDay <- median(inflow_cbmPerHour)*24
+medianInflow_cbmPerDay <- stats::median(inflow_cbmPerHour)*24
 
 print(sprintf("Median inflow to infiltration pond: %2.1f m3/h (%4.1f m3/day)",
-              median(inflow_cbmPerHour), 
+              stats::median(inflow_cbmPerHour), 
               medianInflow_cbmPerDay))
 
 ### Infiltration rate per unit area (m/d)
