@@ -13,21 +13,31 @@ fitnessWithLabel(heatModel, moniDat, objState = "waterLevelChange",
 
 \item{moniDat}{as retrieved by processingData()}
 
-\item{objState}{model state variable to be optimised either "waterLevelChange"
-or "temp" (for temperature) (Default: "waterLevelChange")}
+\item{objState}{model state variable to be optimised either
+"waterLevelChange" or "temp" (for temperature) (Default:
+"waterLevelChange")}
 
-\item{objCrit}{vector with performance parameters produced by function 
-hydroGOF:gof(), Default: "RMSE" (valid parameters: "ME", MAE", "MSE", "RMSE", 
-"NRMSE", "PBIAS", "RSR", "rSD", "NSE", "mNSE", "rNSE", "d", "md", "rd", "cp", 
-"r", "R2", "bR2", "KGE", "VE")}
+\item{objCrit}{vector with performance parameters produced by function
+hydroGOF:gof(), Default: "RMSE" (valid parameters: "ME", MAE", "MSE",
+"RMSE", "NRMSE", "PBIAS", "RSR", "rSD", "NSE", "mNSE", "rNSE", "d", "md",
+"rd", "cp", "r", "R2", "bR2", "KGE", "VE")}
 
 \item{plotIt}{if TRUE lattice plot will be produced (Default: TRUE)}
 
-\item{...}{additional parameters passe to plot function lattice:xyplot()}
+\item{plot.type}{plot type}
+
+\item{cex.label}{character expansion factor for labels}
+
+\item{main}{plot title}
+
+\item{performance.in.label}{if \code{TRUE}, the performance indicator appears
+as label}
+
+\item{\dots}{additional parameters passe to plot function lattice:xyplot()}
 }
 \value{
 Plot of water level, water level change & temperature of measured vs.
-modelled data
+  modelled data
 }
 \description{
 Compare measured & modelled results
