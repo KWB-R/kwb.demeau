@@ -22,58 +22,63 @@
 #' @seealso \code{defineHeadBoundary} for valid additional arguments
 #' @return SVH model configuration
 #' @examples
+#' \dontrun{
 #' ### Importing GIS features
 #' shp.dir <- system.file("extdata", "qgis", package="kwb.demeau")
 #' shp.files <- dir(path = shp.dir, pattern = ".shp", full.names = TRUE)
 #' gisData <- importShapefiles(shp.files)
+#' 
 #' ### Optionally remove some features 
 #' gisData <- removeFeatures(gisData = gisData, ignoreFeatureIDs = c(3,20))
 #' modelStructure <- convRealCoordinatesToNodes(gisData = gisData)
-
+#' 
 #' ### Model config
 #' conf <- modelConfiguration(modelStructure = modelStructure)
 #'                
-#'### Running the configuration in VS2DH
-#'res <- kwb.vs2dh::vs2di.runConfig(conf = conf,
-#'                                  openTargetDir = TRUE)
+#' ### Running the configuration in VS2DH
+#' res <- kwb.vs2dh::vs2di.runConfig(conf = conf, openTargetDir = TRUE)
 #' 
-#'### Plotting results
-#' kwb.vs2dh::vs2dh.plotObservationPoints(paras = "TEMP", 
-#'                                    paraLabel = "Temperature", 
-#'                                    data=res$obsPoints)
-#' kwb.vs2dh::vs2dh.plotVariables(para = "Temp", 
-#'                                data = res$variables)  
-
-modelConfiguration <- function(modelStructure,
-                               pondTemp = 20,
-                               gwTempIni = 12, 
-                               infRate = 0.03,
-                               depthToWaterTable = 6, 
-                               hydraulicGradient = 0.001,
-                               bnd = list(tmp = gwTempIni, ## default: equal to aquifer
-                                          ntx = 4, ### default: specific head
-                                          ntc = 1  ### default: transport boundary = TRUE
-                               ),
-                               hk = kwb.vs2dh::vs2dh.ConfigureGenuchten(ratioKzKh = 1,
-                                                                        ss = 0,
-                                                                        satKh = 750, ### m/d, reference: PREPARED report
-                                                                        porosity = 0.2,
-                                                                        alpha = 2.3,
-                                                                        rmc = 0,
-                                                                        beta = 5.8),
-                               ht = kwb.vs2dh::vs2dh.ConfigureTrans(),
-                               iniOutputTime = 1/(3600*24),
-                               minSimTime = 0.5,
-                               maxSimTime = 31, 
-                               outputTimeStep = 1,
-                               solver = kwb.vs2dh::vs2dh.ConfigureBasicSolver(),
-                               rSolver = kwb.vs2dh::vs2dh.ConfigureRechargePeriodSolver()
-){
-  
-  
-  outputTimes <- c(iniOutputTime, seq(from = minSimTime, 
-                                      to = maxSimTime, 
-                                      by = outputTimeStep))
+#' ### Plotting results
+#' kwb.vs2dh::vs2dh.plotObservationPoints(
+#'   paras = "TEMP", paraLabel = "Temperature", data = res$obsPoints
+#' )
+#' kwb.vs2dh::vs2dh.plotVariables(para = "Temp", data = res$variables)
+#' }
+#' 
+modelConfiguration <- function(
+  modelStructure,
+  pondTemp = 20,
+  gwTempIni = 12, 
+  infRate = 0.03,
+  depthToWaterTable = 6, 
+  hydraulicGradient = 0.001,
+  bnd = list(
+    tmp = gwTempIni, ## default: equal to aquifer
+    ntx = 4, ### default: specific head
+    ntc = 1  ### default: transport boundary = TRUE
+  ),
+  hk = kwb.vs2dh::vs2dh.ConfigureGenuchten(
+    ratioKzKh = 1,
+    ss = 0,
+    satKh = 750, ### m/d, reference: PREPARED report
+    porosity = 0.2,
+    alpha = 2.3,
+    rmc = 0,
+    beta = 5.8
+  ),
+  ht = kwb.vs2dh::vs2dh.ConfigureTrans(),
+  iniOutputTime = 1/(3600*24),
+  minSimTime = 0.5,
+  maxSimTime = 31, 
+  outputTimeStep = 1,
+  solver = kwb.vs2dh::vs2dh.ConfigureBasicSolver(),
+  rSolver = kwb.vs2dh::vs2dh.ConfigureRechargePeriodSolver()
+)
+{
+  outputTimes <- c(
+    iniOutputTime, 
+    seq(from = minSimTime, to = maxSimTime, by = outputTimeStep)
+  )
   
   ################################################################################
   #### 1) Basic configuration
