@@ -1,3 +1,4 @@
+^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .travis.yml
@@ -8,3 +9,6 @@
 _pkgdown.yaml
 LICENSE\.md$
 .gitlab-ci.yml
+^index\.Rmd$
+^.gitlab-ci\.yml$
+^.travis\.yml$

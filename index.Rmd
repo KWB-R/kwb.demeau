@@ -1,10 +1,8 @@
-[![Appveyor build Status](https://ci.appveyor.com/api/projects/status/github/KWB-R/kwb.demeau?branch=master&svg=true)](https://ci.appveyor.com/project/KWB-R/kwb-demeau/branch/master)
+[![Appveyor build Status](https://ci.appveyor.com/api/projects/status/yt945q4xcxbixfy5/branch/master?svg=true)](https://ci.appveyor.com/project/KWB-R/kwb-demeau/branch/master)
 [![Travis build Status](https://travis-ci.org/KWB-R/kwb.demeau.svg?branch=master)](https://travis-ci.org/KWB-R/kwb.demeau)
 [![codecov](https://codecov.io/github/KWB-R/kwb.demeau/branch/master/graphs/badge.svg)](https://codecov.io/github/KWB-R/kwb.demeau)
 [![Project Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/kwb.demeau)]()
-
-# kwb.demeau
 
 Heat tracer study for SVH site using USGS VS2DH model.
 
@@ -12,7 +10,7 @@ Heat tracer study for SVH site using USGS VS2DH model.
 
 For details on how to install KWB-R packages checkout our [installation tutorial](https://kwb-r.github.io/kwb.pkgbuild/articles/install.html).
 
-```r
+```{r echo = TRUE, eval = FALSE}
 ### Optionally: specify GitHub Personal Access Token (GITHUB_PAT)
 ### See here why this might be important for you:
 ### https://kwb-r.github.io/kwb.pkgbuild/articles/install.html#set-your-github_pat
@@ -30,9 +28,3 @@ if (! require("remotes")) {
 remotes::install_github("r-lib/remotes@18c7302637053faf21c5b025e1e9243962db1bdc")
 remotes::install_github("KWB-R/kwb.demeau")
 ```
-
-## Documentation
-
-Release: [https://kwb-r.github.io/kwb.demeau](https://kwb-r.github.io/kwb.demeau)
-
-Development: [https://kwb-r.github.io/kwb.demeau/dev](https://kwb-r.github.io/kwb.demeau/dev)

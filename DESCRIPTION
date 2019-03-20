@@ -1,5 +1,5 @@
 Package: kwb.demeau
-Version: 0.1.0.9000
+Version: 0.0.0.9000
 Title: Heat tracer study SVH
 Authors@R: c(person("Michael", "Rustler", , "michael.rustler@kompetenz-wasser.de", role = c("aut", "cre"), 
              comment = c(ORCID = "0000-0003-0647-7726")),
