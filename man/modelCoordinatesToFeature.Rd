@@ -4,8 +4,8 @@
 \alias{modelCoordinatesToFeature}
 \title{Conversion: feature parameterisation}
 \usage{
-modelCoordinatesToFeature(x = c(100, 220), y = 0, dx = 0.5, dy = 0.5,
-  pondDepth = verticalCmToMeters(cm = 1.2), steepness = 45)
+modelCoordinatesToFeature(x = c(100, 220), y = 0, dx = 0.5,
+  dy = 0.5, pondDepth = verticalCmToMeters(cm = 1.2), steepness = 45)
 }
 \arguments{
 \item{x}{absolute horizontal min/max coordinates of model feature. L, Default: c(100,220)}

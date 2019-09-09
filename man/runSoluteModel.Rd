@@ -4,8 +4,8 @@
 \alias{runSoluteModel}
 \title{Run solute transport model: wrapper for vs2di.runConfig()}
 \usage{
-runSoluteModel(preparedSoluteModel, tDir = tempdir(), returnOutput = TRUE,
-  openTargetDir = FALSE, ...)
+runSoluteModel(preparedSoluteModel, tDir = tempdir(),
+  returnOutput = TRUE, openTargetDir = FALSE, ...)
 }
 \arguments{
 \item{preparedSoluteModel}{prepared solute transport model as retrieved by  prepareModel(type="solu")}

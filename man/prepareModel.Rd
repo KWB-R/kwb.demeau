@@ -7,20 +7,21 @@
 prepareModel(gisData, type = "heat", rech_pondInfRate = 1,
   rech_pondTemp = 13.7, rech_pondConc = 1, init_gwTemp = 19,
   init_gwConc = 0, init_depthToWaterTable = 6, init_hydrGrad = 0.001,
-  grid_dx = 1, grid_dy = 1, grid_yMax = NULL, flow_ratioKzKh = 0.01,
-  flow_satKh = 450, flow_ss = 0, flow_neff = 0.2, flow_rmc = 0.05,
-  flow_alpha = 2, flow_beta = 5, heat_alphaL = 1, heat_alphaT = 0.1,
-  heat_cs = 2180000, heat_ktRmc = 129600, heat_ktSat = 155520,
-  heat_cw = 4180000, solu_alphaL = 1, solu_alphaT = 0.1,
-  solu_molDiffCoeff = 4.5e-05 * 3600 * 24/100, solu_decayConst = 0,
-  solu_bulkDensity = 0, solu_adsorp = 0, time_firstOutput = 1/(3600 * 24),
-  time_minSimTime = 0.5, time_maxSimTime = 30.5, time_outputTimeStep = 1,
-  solv_cis = TRUE, solv_cit = TRUE, solv_numt = 5000, solv_minit = 2,
-  solv_itmax = 300, solv_eps = 0.001, solv_eps1 = 0.001,
-  solv_eps2 = 0.001, solv_hmax = 0.7, solv_itstop = FALSE,
-  solr_delt = 1e-06, solr_tmlt = 1.2, solr_dltmx = 1,
-  solr_dltmin = 1e-06, solr_tred = 0.5, solr_dsmax = 10, solr_sterr = 0,
-  solr_pond = 0)
+  grid_dx = 1, grid_dy = 1, grid_yMax = NULL,
+  flow_ratioKzKh = 0.01, flow_satKh = 450, flow_ss = 0,
+  flow_neff = 0.2, flow_rmc = 0.05, flow_alpha = 2, flow_beta = 5,
+  heat_alphaL = 1, heat_alphaT = 0.1, heat_cs = 2180000,
+  heat_ktRmc = 129600, heat_ktSat = 155520, heat_cw = 4180000,
+  solu_alphaL = 1, solu_alphaT = 0.1, solu_molDiffCoeff = 4.5e-05 *
+  3600 * 24/100, solu_decayConst = 0, solu_bulkDensity = 0,
+  solu_adsorp = 0, time_firstOutput = 1/(3600 * 24),
+  time_minSimTime = 0.5, time_maxSimTime = 30.5,
+  time_outputTimeStep = 1, solv_cis = TRUE, solv_cit = TRUE,
+  solv_numt = 5000, solv_minit = 2, solv_itmax = 300,
+  solv_eps = 0.001, solv_eps1 = 0.001, solv_eps2 = 0.001,
+  solv_hmax = 0.7, solv_itstop = FALSE, solr_delt = 1e-06,
+  solr_tmlt = 1.2, solr_dltmx = 1, solr_dltmin = 1e-06,
+  solr_tred = 0.5, solr_dsmax = 10, solr_sterr = 0, solr_pond = 0)
 }
 \arguments{
 \item{gisData}{as retrieved by kwb.demeau::importShapefiles()}

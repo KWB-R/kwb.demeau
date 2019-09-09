@@ -4,8 +4,8 @@
 \alias{genuchtenModels}
 \title{vanGenuchten : multiple models}
 \usage{
-genuchtenModels(pressureHeads = -rev(seq(0, 6, 0.5)), alphas = seq(1, 2,
-  0.5), betas = 1:5)
+genuchtenModels(pressureHeads = -rev(seq(0, 6, 0.5)), alphas = seq(1,
+  2, 0.5), betas = 1:5)
 }
 \arguments{
 \item{pressureHeads}{pressureHeads}

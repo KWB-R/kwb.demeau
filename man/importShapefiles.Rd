@@ -4,8 +4,8 @@
 \alias{importShapefiles}
 \title{GIS: imports shapefiles & dbf}
 \usage{
-importShapefiles(shp.files = dir(path = system.file("extdata", "qgis", package
-  = "kwb.demeau"), pattern = ".shp", full.names = TRUE))
+importShapefiles(shp.files = dir(path = system.file("extdata", "qgis",
+  package = "kwb.demeau"), pattern = ".shp", full.names = TRUE))
 }
 \arguments{
 \item{shp.files}{vector with full paths to shapefiles "Boundary", "Ponds", 

@@ -7,10 +7,10 @@
 modelConfiguration(modelStructure, pondTemp = 20, gwTempIni = 12,
   infRate = 0.03, depthToWaterTable = 6, hydraulicGradient = 0.001,
   bnd = list(tmp = gwTempIni, ntx = 4, ntc = 1),
-  hk = kwb.vs2dh::vs2dh.ConfigureGenuchten(ratioKzKh = 1, ss = 0, satKh = 750,
-  porosity = 0.2, alpha = 2.3, rmc = 0, beta = 5.8),
-  ht = kwb.vs2dh::vs2dh.ConfigureTrans(), iniOutputTime = 1/(3600 * 24),
-  minSimTime = 0.5, maxSimTime = 31, outputTimeStep = 1,
+  hk = kwb.vs2dh::vs2dh.ConfigureGenuchten(ratioKzKh = 1, ss = 0, satKh =
+  750, porosity = 0.2, alpha = 2.3, rmc = 0, beta = 5.8),
+  ht = kwb.vs2dh::vs2dh.ConfigureTrans(), iniOutputTime = 1/(3600 *
+  24), minSimTime = 0.5, maxSimTime = 31, outputTimeStep = 1,
   solver = kwb.vs2dh::vs2dh.ConfigureBasicSolver(),
   rSolver = kwb.vs2dh::vs2dh.ConfigureRechargePeriodSolver())
 }

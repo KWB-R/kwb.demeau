@@ -5,8 +5,8 @@
 \title{Calibration: helper function "modelFitnessAggregated" (called by function 
 fitnessAdaptedModelConfiguration()}
 \usage{
-modelFitnessAggregated(modelledMeasured, obsPoints = "*", objCrit = "RMSE",
-  ...)
+modelFitnessAggregated(modelledMeasured, obsPoints = "*",
+  objCrit = "RMSE", ...)
 }
 \arguments{
 \item{modelledMeasured}{as retrieved by compareModelledMeasured() either $temp or 

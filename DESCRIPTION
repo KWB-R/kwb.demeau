@@ -33,5 +33,6 @@ Remotes:
     github::kwb-r/kwb.utils,
     github::kwb-r/kwb.db,
     github::kwb-r/kwb.vs2dh
+Encoding: UTF-8
 LazyLoad: yes
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

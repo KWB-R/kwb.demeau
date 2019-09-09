@@ -4,9 +4,9 @@
 \alias{plotMonitoringWithTwoYAxes}
 \title{Monitoring: plot data with two y axex}
 \usage{
-plotMonitoringWithTwoYAxes(parY1 = "WaterLevelChange_cm", parY2 = "Temp_C",
-  labelParY1 = "Water level change (cm)", labelParY2 = "Temperature (C)",
-  df, ...)
+plotMonitoringWithTwoYAxes(parY1 = "WaterLevelChange_cm",
+  parY2 = "Temp_C", labelParY1 = "Water level change (cm)",
+  labelParY2 = "Temperature (C)", df, ...)
 }
 \arguments{
 \item{parY1}{name of parameter for Y1 axis (see: colnames(listToMatrixForm(df)),

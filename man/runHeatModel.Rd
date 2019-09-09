@@ -4,8 +4,8 @@
 \alias{runHeatModel}
 \title{Run heat model: wrapper for vs2di.runConfig()}
 \usage{
-runHeatModel(preparedHeatModel, tDir = tempdir(), openTargetDir = FALSE,
-  ...)
+runHeatModel(preparedHeatModel, tDir = tempdir(),
+  openTargetDir = FALSE, ...)
 }
 \arguments{
 \item{preparedHeatModel}{prepared heat model as retrieved by  prepareModel(type="heat")}

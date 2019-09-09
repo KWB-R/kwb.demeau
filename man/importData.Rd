@@ -4,8 +4,8 @@
 \alias{importData}
 \title{Monitoring: excel data import}
 \usage{
-importData(xlsPath = NULL, metaTables = c("metadataTable", "commentTable"),
-  moniTables = c("bsv4", "bsvAll", "tuberia", "inflow"),
+importData(xlsPath = NULL, metaTables = c("metadataTable",
+  "commentTable"), moniTables = c("bsv4", "bsvAll", "tuberia", "inflow"),
   ignoredParNames = c("Temp_graphics_C", "DiverBaro_graphFictive_cm",
   "DiverBaro_cm"))
 }
