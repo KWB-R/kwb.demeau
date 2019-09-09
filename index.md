@@ -6,11 +6,12 @@
 
 Heat tracer study for SVH site using USGS VS2DH model.
 
+
 ## Installation
 
 For details on how to install KWB-R packages checkout our [installation tutorial](https://kwb-r.github.io/kwb.pkgbuild/articles/install.html).
 
-```{r echo = TRUE, eval = FALSE}
+```r
 ### Optionally: specify GitHub Personal Access Token (GITHUB_PAT)
 ### See here why this might be important for you:
 ### https://kwb-r.github.io/kwb.pkgbuild/articles/install.html#set-your-github_pat
@@ -22,9 +23,7 @@ if (! require("remotes")) {
   install.packages("remotes", repos = "https://cloud.r-project.org")
 }
 
-### Temporary workaround on Windows to fix bug in CRAN version v2.0.2
-### of "remotes" (see https://github.com/r-lib/remotes/issues/248)
+# Install KWB package 'kwb.demeau' from GitHub"
 
-remotes::install_github("r-lib/remotes@18c7302637053faf21c5b025e1e9243962db1bdc")
-remotes::install_github("KWB-R/kwb.demeau")
+remotes::install_github("kwb-r/kwb.demeau") 
 ```

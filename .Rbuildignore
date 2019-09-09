@@ -12,3 +12,4 @@ LICENSE\.md$
 ^index\.Rmd$
 ^.gitlab-ci\.yml$
 ^.travis\.yml$
+^\.travis\.yml$
