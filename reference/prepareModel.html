@@ -8,21 +8,25 @@
 
 <title>Prepare model: wrapper for modelConfiguration() — prepareModel • kwb.demeau</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -36,10 +40,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Prepare model: wrapper for modelConfiguration() — prepareModel" />
 
+<meta property="og:title" content="Prepare model: wrapper for modelConfiguration() — prepareModel" />
 <meta property="og:description" content="Prepare model: wrapper for modelConfiguration()" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -51,6 +56,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -77,7 +83,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -85,17 +91,16 @@
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/KWB-R/kwb.demeau">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
       
-      <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
@@ -106,6 +111,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -117,29 +123,28 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Prepare model: wrapper for modelConfiguration()</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>prepareModel</span>(<span class='no'>gisData</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"heat"</span>, <span class='kw'>rech_pondInfRate</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>rech_pondTemp</span> <span class='kw'>=</span> <span class='fl'>13.7</span>, <span class='kw'>rech_pondConc</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>init_gwTemp</span> <span class='kw'>=</span> <span class='fl'>19</span>,
   <span class='kw'>init_gwConc</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>init_depthToWaterTable</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>init_hydrGrad</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
-  <span class='kw'>grid_dx</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>grid_dy</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>grid_yMax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>flow_ratioKzKh</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
-  <span class='kw'>flow_satKh</span> <span class='kw'>=</span> <span class='fl'>450</span>, <span class='kw'>flow_ss</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>flow_neff</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>flow_rmc</span> <span class='kw'>=</span> <span class='fl'>0.05</span>,
-  <span class='kw'>flow_alpha</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>flow_beta</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>heat_alphaL</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>heat_alphaT</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>heat_cs</span> <span class='kw'>=</span> <span class='fl'>2180000</span>, <span class='kw'>heat_ktRmc</span> <span class='kw'>=</span> <span class='fl'>129600</span>, <span class='kw'>heat_ktSat</span> <span class='kw'>=</span> <span class='fl'>155520</span>,
-  <span class='kw'>heat_cw</span> <span class='kw'>=</span> <span class='fl'>4180000</span>, <span class='kw'>solu_alphaL</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>solu_alphaT</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>solu_molDiffCoeff</span> <span class='kw'>=</span> <span class='fl'>4.5e-05</span> * <span class='fl'>3600</span> * <span class='fl'>24</span>/<span class='fl'>100</span>, <span class='kw'>solu_decayConst</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>solu_bulkDensity</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>solu_adsorp</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>time_firstOutput</span> <span class='kw'>=</span> <span class='fl'>1</span>/(<span class='fl'>3600</span> * <span class='fl'>24</span>),
-  <span class='kw'>time_minSimTime</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>time_maxSimTime</span> <span class='kw'>=</span> <span class='fl'>30.5</span>, <span class='kw'>time_outputTimeStep</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>solv_cis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>solv_cit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>solv_numt</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>solv_minit</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>solv_itmax</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>solv_eps</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>solv_eps1</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
-  <span class='kw'>solv_eps2</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>solv_hmax</span> <span class='kw'>=</span> <span class='fl'>0.7</span>, <span class='kw'>solv_itstop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>solr_delt</span> <span class='kw'>=</span> <span class='fl'>1e-06</span>, <span class='kw'>solr_tmlt</span> <span class='kw'>=</span> <span class='fl'>1.2</span>, <span class='kw'>solr_dltmx</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>solr_dltmin</span> <span class='kw'>=</span> <span class='fl'>1e-06</span>, <span class='kw'>solr_tred</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>solr_dsmax</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>solr_sterr</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>solr_pond</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
-    
+  <span class='kw'>grid_dx</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>grid_dy</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>grid_yMax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>flow_ratioKzKh</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>flow_satKh</span> <span class='kw'>=</span> <span class='fl'>450</span>, <span class='kw'>flow_ss</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>flow_neff</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>flow_rmc</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>flow_alpha</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>flow_beta</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>heat_alphaL</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>heat_alphaT</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>heat_cs</span> <span class='kw'>=</span> <span class='fl'>2180000</span>,
+  <span class='kw'>heat_ktRmc</span> <span class='kw'>=</span> <span class='fl'>129600</span>, <span class='kw'>heat_ktSat</span> <span class='kw'>=</span> <span class='fl'>155520</span>, <span class='kw'>heat_cw</span> <span class='kw'>=</span> <span class='fl'>4180000</span>,
+  <span class='kw'>solu_alphaL</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>solu_alphaT</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>solu_molDiffCoeff</span> <span class='kw'>=</span> <span class='fl'>4.5e-05</span> *
+  <span class='fl'>3600</span> * <span class='fl'>24</span>/<span class='fl'>100</span>, <span class='kw'>solu_decayConst</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>solu_bulkDensity</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>solu_adsorp</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>time_firstOutput</span> <span class='kw'>=</span> <span class='fl'>1</span>/(<span class='fl'>3600</span> * <span class='fl'>24</span>),
+  <span class='kw'>time_minSimTime</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>time_maxSimTime</span> <span class='kw'>=</span> <span class='fl'>30.5</span>,
+  <span class='kw'>time_outputTimeStep</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>solv_cis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>solv_cit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>solv_numt</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>solv_minit</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>solv_itmax</span> <span class='kw'>=</span> <span class='fl'>300</span>,
+  <span class='kw'>solv_eps</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>solv_eps1</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>solv_eps2</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
+  <span class='kw'>solv_hmax</span> <span class='kw'>=</span> <span class='fl'>0.7</span>, <span class='kw'>solv_itstop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>solr_delt</span> <span class='kw'>=</span> <span class='fl'>1e-06</span>,
+  <span class='kw'>solr_tmlt</span> <span class='kw'>=</span> <span class='fl'>1.2</span>, <span class='kw'>solr_dltmx</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>solr_dltmin</span> <span class='kw'>=</span> <span class='fl'>1e-06</span>,
+  <span class='kw'>solr_tred</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>solr_dsmax</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>solr_sterr</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>solr_pond</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -407,16 +412,15 @@ state has been reached for this period and advances to next recharge period, L.
 See Lappala and other (1987) for detailed discussion of POND, L. (default: 0)</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Prepared SVH model configuration</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>### Importing GIS features</span>
-<span class='no'>shp.dir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"qgis"</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"kwb.demeau"</span>)
-<span class='no'>shp.files</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list.files'>dir</a></span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='no'>shp.dir</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>".shp"</span>, <span class='kw'>full.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>shp.dir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"qgis"</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"kwb.demeau"</span>)
+<span class='no'>shp.files</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='no'>shp.dir</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>".shp"</span>, <span class='kw'>full.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='no'>gisData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='importShapefiles.html'>importShapefiles</a></span>(<span class='no'>shp.files</span>)
 <span class='co'>### Optionally remove some features </span>
 <span class='no'>gisData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='removeFeatures.html'>removeFeatures</a></span>(<span class='kw'>gisData</span> <span class='kw'>=</span> <span class='no'>gisData</span>, <span class='kw'>ignoreFeatureIDs</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; <span class='message'>Feature: Settling basin of Ponds.shp ignored by user!</span></div><div class='input'><span class='co'>#### 1) Prepare heat </span>
@@ -428,14 +432,13 @@ See Lappala and other (1987) for detailed discussion of POND, L. (default: 0)</p
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -443,8 +446,9 @@ See Lappala and other (1987) for detailed discussion of POND, L. (default: 0)</p
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
    </div>
 
@@ -467,6 +471,8 @@ See Lappala and other (1987) for detailed discussion of POND, L. (default: 0)</p
 </script>
 
 
+
   </body>
 </html>
+
 
